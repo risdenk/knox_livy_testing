@@ -1,0 +1,32 @@
+version: '2'
+services:
+  ldap:
+    image: risdenk/knox_livy_testing:knox
+    command: /ldap.sh
+
+  knox:
+    image: risdenk/knox_livy_testing:knox
+    container_name: knox
+    ports:
+    - "8443:8443"
+    command: /gateway.sh
+    volumes:
+    - ./topologies:/knox/conf/topologies
+    volumes_from:
+    - kdc
+    depends_on:
+    - ldap
+    - kdc
+
+  kdc:
+    image: risdenk/knox_livy_testing:kdc
+    ports:
+    - "88"
+    - "88/udp"
+    volumes:
+    - /etc/docker-kdc
+
+networks:
+  default:
+    external:
+      name: example.com
