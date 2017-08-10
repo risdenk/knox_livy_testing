@@ -22,7 +22,6 @@ TODO
 3. Check the URLs above.
 
 ## References
-* https://cwiki.apache.org/confluence/display/KNOX/Proxying+a+UI+using+Knox
 * https://issues.apache.org/jira/browse/KNOX-842
 * https://community.hortonworks.com/articles/70499/adding-livy-server-as-service-to-apache-knox.html
 
