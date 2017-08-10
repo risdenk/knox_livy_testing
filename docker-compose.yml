@@ -26,6 +26,9 @@ services:
     volumes:
     - /etc/docker-kdc
 
+  livy:
+    image: risdenk/knox_livy_testing:livy
+
 networks:
   default:
     external:

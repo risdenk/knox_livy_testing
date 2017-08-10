@@ -12,3 +12,7 @@ services:
     build: ./kdc
     image: risdenk/knox_livy_testing:kdc
 
+ livy:
+    build: ./livy
+    image: risdenk/knox_livy_testing:livy
+
