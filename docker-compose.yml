@@ -28,8 +28,13 @@ services:
 
   livy:
     image: risdenk/knox_livy_testing:livy
+    ports:
+    - "8998"
+    volumes_from:
+    - kdc
 
 networks:
   default:
     external:
       name: example.com
+
