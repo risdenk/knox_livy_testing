@@ -15,5 +15,5 @@ ENV SPARK_HOME=/spark
 
 COPY livy.conf /livy/conf/livy.conf
 
-ENTRYPOINT cp -f /etc/docker-kdc/krb5.conf /etc/krb5.conf && kinit -kt /etc/docker-kdc/livy.keytab livy/livy.example.com@EXAMPLE.COM && /livy/bin/livy-server start
+ENTRYPOINT cp -f /etc/docker-kdc/krb5.conf /etc/krb5.conf && kinit -kt /etc/docker-kdc/livy.keytab livy/livy.example.com@EXAMPLE.COM && /livy/bin/livy-server
 
