@@ -10,5 +10,7 @@ RUN wget -qO- https://d3kbcqa49mib13.cloudfront.net/spark-2.2.0-bin-hadoop2.7.tg
 
 ENV SPARK_HOME=/spark
 
+COPY livy.conf /livy/conf/livy.conf
+
 ENTRYPOINT /livy/bin/livy-server
 
