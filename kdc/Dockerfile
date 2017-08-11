@@ -12,11 +12,13 @@ EXPOSE 88
 
 # Add kerberos principal/s.
 RUN kadmin -l add --password=knox --use-defaults knox/knox.example.com@EXAMPLE.COM
-RUN kadmin -l add --password=livy --use-defaults HTTP/livy.example.com@EXAMPLE.COM
+RUN kadmin -l add --password=http --use-defaults HTTP/livy.example.com@EXAMPLE.COM
+RUN kadmin -l add --password=livy --use-defaults livy/livy.example.com@EXAMPLE.COM
 
 # Export keytab.
 RUN kadmin -l ext_keytab -k /etc/docker-kdc/knox.keytab knox/knox.example.com@EXAMPLE.COM
-RUN kadmin -l ext_keytab -k /etc/docker-kdc/livy.keytab HTTP/livy.example.com@EXAMPLE.COM
+RUN kadmin -l ext_keytab -k /etc/docker-kdc/spnego.keytab HTTP/livy.example.com@EXAMPLE.COM
+RUN kadmin -l ext_keytab -k /etc/docker-kdc/livy.keytab livy/livy.example.com@EXAMPLE.COM
 
 RUN chmod 444 /etc/docker-kdc/*.keytab
 
