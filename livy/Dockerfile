@@ -8,9 +8,11 @@ RUN apk --no-cache add ca-certificates openssl wget && update-ca-certificates
 
 RUN wget -qO- https://d3kbcqa49mib13.cloudfront.net/spark-2.2.0-bin-hadoop2.7.tgz | tar -zxv -C / && rm -f /spark-2.2.0-bin-hadoop2.tgz && ln -nsf /spark-2.2.0-bin-hadoop2.7 /spark
 
+RUN apk --no-cache add krb5
+
 ENV SPARK_HOME=/spark
 
 COPY livy.conf /livy/conf/livy.conf
 
-ENTRYPOINT /livy/bin/livy-server
+ENTRYPOINT cp -f /etc/docker-kdc/krb5.conf /etc/krb5.conf && kinit -kt /etc/docker-kdc/livy.keytab livy/livy.example.com@EXAMPLE.COM && /livy/bin/livy-server start
 
