@@ -11,6 +11,7 @@ COPY master /knox/data/security/master
 COPY gateway-site.xml /knox/conf/gateway-site.xml
 COPY krb5JAASLogin.conf /knox/conf/krb5JAASLogin.conf
 COPY gateway-log4j.properties /knox/conf/gateway-log4j.properties
+COPY topologies/* /knox/conf/topologies/
 
 RUN chown -R knox /knox/data/security
 
