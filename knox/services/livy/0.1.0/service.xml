@@ -1,0 +1,11 @@
+<service role="LIVYSERVER" name="livy" version="0.1.0">
+  <routes>
+    <route path="/livy/v1/sessions">
+        <rewrite apply="LIVYSERVER/livy/addusername/inbound" to="request.body"/>
+    </route>
+    <route path="/livy/v1/**?**"/>
+    <route path="/livy/v1"/>
+    <route path="/livy/v1/"/>
+  </routes>
+</service>
+ 

@@ -73,14 +73,14 @@
             <name>HaProvider</name>
             <enabled>true</enabled>
             <param>
-               <name>LIVY</name>
+               <name>LIVYSERVER</name>
                <value>maxFailoverAttempts=3;failoverSleep=1000;enabled=true</value>
             </param>
         </provider>
     </gateway>
 
     <service>
-        <role>LIVY</role>
+        <role>LIVYSERVER</role>
         <url>http://livy.example.com:8998</url>
     </service>
 </topology>
